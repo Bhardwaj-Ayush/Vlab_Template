@@ -30,7 +30,7 @@ export default function Navbar() {
                         </div>
                         <div className=" text-center text-base">
                             <Link className="internal_link" to="./Code">
-                                <img className="md:h-14 h-10 w-14 rounded-full mt-2 mx-2"
+                                <img className="md:h-14 h-10 w-14 rounded-full mt-2 mx-4"
                                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/110px-Python-logo-notext.svg.png"alt='/'/>
                                 Python Code</Link>
                         </div>
