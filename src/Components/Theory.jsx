@@ -1,7 +1,7 @@
-import React from 'react';
-import {BiSolidRightArrow} from "react-icons/bi"
+import React from "react";
+import { BiSolidRightArrow } from "react-icons/bi";
 // import {PiDotOutlineFill} from "react-icons/pi"
-import {AiTwotoneStar} from "react-icons/ai"
+import { AiTwotoneStar } from "react-icons/ai";
 
 export default function Theory() {
   return (
@@ -13,29 +13,83 @@ export default function Theory() {
           </div>
           <div className="desc1 font-Mooli">
             <p className="desc">
-              <div className='font-Mooli'>
-               In order to explore or search through all the vertices of a graph or tree in a breadthward motion, or to explore all the vertices at the same level before moving to the next level, we use the breadth-first search (BFS) algorithm. In an unweighted graph, BFS is frequently used to determine the shortest path between two nodes and is also a fundamental building block for many other algorithms.
+              <div className="font-Mooli">
+                In order to systematically explore or search through all the
+                vertices of a graph or tree in a depthward motion, or to explore
+                as far as possible along each branch before backtracking, we use
+                the depth-first search (DFS) algorithm. In an unweighted graph,
+                DFS is frequently used to traverse the entire graph or tree,
+                visiting as deep as possible along each branch before
+                backtracking
               </div>
-
-              <div className='flex space-x-2 my-2'>
-                <AiTwotoneStar className='mt-1'/>
-                <p><strong className='text-xl'>Applications of Breadth First Search :-</strong></p>
+              <div className="flex space-x-2 my-2">
+                <AiTwotoneStar className="mt-1" />
+                <p>
+                  <strong className="text-xl">
+                    Applications of Depth First Search :-
+                  </strong>
+                </p>
               </div>
               <div>
-                <ul >
-                    <li className='flex ml-4'><BiSolidRightArrow className='mt-1'/><p> Shortest Path and Distance: BFS can be used to find the shortest path between two nodes in an unweighted graph. By running BFS from the source node and stopping when the target node is reached.</p></li>
-                    <li className='flex ml-4'><BiSolidRightArrow className='mt-1'/><p>Maze Solving: BFS is often used to find the shortest path through a maze. It can help a robot or computer program navigate through a maze by exploring adjacent cells level by level until the exit is found.</p></li>
-                    <li className='flex ml-4'><BiSolidRightArrow className='mt-1'/><p>Network Broadcasting: In computer networks, BFS can be used to broadcast messages or updates to all nodes in a network. This ensures that information reaches all reachable nodes in the most efficient manner.</p></li>
-                    <li className='flex ml-4'><BiSolidRightArrow className='mt-1'/><p>Web Crawling: Search engines use BFS to crawl and index web pages. The algorithm starts from a seed URL, explores linked pages, and continues to follow links to discover and index new web content.</p></li>
-                    <li className='flex ml-4'><BiSolidRightArrow className='mt-1'/><p>Social Network Analysis: BFS can be applied to analyze social networks. It helps identify connected components, find friends or connections within a certain distance, and understand network structures.</p></li>
-                    <li className='flex ml-4'><BiSolidRightArrow className='mt-1'/><p>Shortest Path in a Chessboard: In chess, BFS can be used to find the shortest number of moves required for a knight to reach a particular square on the board. This is known as the knight's tour problem.</p></li>
-                    <li className='flex ml-4'><BiSolidRightArrow className='mt-1'/><p>Game Development: BFS is employed in game development for pathfinding and AI behavior. It can help characters or game agents navigate through game environments and make decisions based on the proximity of objects or opponents.</p></li>
-                    <li className='flex ml-4'><BiSolidRightArrow className='mt-1'/><p>Recommendation Systems: In recommendation systems, BFS can be used to find similar users or items within a certain distance or level of connection. It helps improve personalized recommendations.</p></li>
-                    <li className='flex ml-4'><BiSolidRightArrow className='mt-1'/><p>Dependency Analysis: BFS is used in software engineering to analyze dependencies between modules, classes, or functions in a software project. It helps identify dependencies and their levels.</p></li>
-                    
+                <ul>
+                  <li className="flex ml-4">
+                    <BiSolidRightArrow className="mt-1" />
+                    <p>
+                      {" "}
+                      Traversal and Search: DFS is used to traverse or search through all the vertices of a graph or tree, exploring as far as possible along each branch before backtracking.
+                    </p>
+                  </li>
+                  <li className="flex ml-4">
+                    <BiSolidRightArrow className="mt-1" />
+                    <p>
+                    Cycle Detection: DFS can be used to detect cycles in a graph by keeping track of visited nodes and back edges.
+                    </p>
+                  </li>
+                  <li className="flex ml-4">
+                    <BiSolidRightArrow className="mt-1" />
+                    <p>
+                    Topological Sorting: DFS can be employed to perform topological sorting of a directed acyclic graph (DAG), which is useful in scheduling tasks or dependencies
+                    </p>
+                  </li>
+                  <li className="flex ml-4">
+                    <BiSolidRightArrow className="mt-1" />
+                    <p>
+                    Connected Components: DFS can identify connected components in an undirected graph by visiting all nodes reachable from a given starting node.
+                    </p>
+                  </li>
+                  <li className="flex ml-4">
+                    <BiSolidRightArrow className="mt-1" />
+                    <p>
+                    Path Finding: DFS can find a path between two nodes in a graph, although it does not guarantee the shortest path.
+                    </p>
+                  </li>
+                  <li className="flex ml-4">
+                    <BiSolidRightArrow className="mt-1" />
+                    <p>
+                    Maze Generation: DFS is often used to generate mazes by recursively carving passages through a grid until all reachable areas are explored.
+                    </p>
+                  </li>
+                  <li className="flex ml-4">
+                    <BiSolidRightArrow className="mt-1" />
+                    <p>
+                    Game Tree Searching: DFS is used in game tree searching algorithms like minimax or alpha-beta pruning to explore possible moves and outcomes in games like chess or tic-tac-toe.
+                    </p>
+                  </li>
+                  <li className="flex ml-4">
+                    <BiSolidRightArrow className="mt-1" />
+                    <p>
+                    Strongly Connected Components: DFS can find strongly connected components in a directed graph, which are sets of nodes where every node is reachable from every other node in the same component.
+                    </p>
+                  </li>
+                  <li className="flex ml-4">
+                    <BiSolidRightArrow className="mt-1" />
+                    <p>
+                    Backtracking: DFS is a fundamental technique used in backtracking algorithms to systematically search for solutions to combinatorial problems like the N-Queens problem or Sudoku.
+                    </p>
+                  </li>
                 </ul>
               </div>
-            </p> 
+            </p>
           </div>
         </div>
       </div>

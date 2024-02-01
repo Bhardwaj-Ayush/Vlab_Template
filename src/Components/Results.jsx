@@ -11,7 +11,7 @@ function Results() {
             </div>
             <div className="desc1">
               <p className="desc font-Robo">
-              Hence, By using BFS Algorithm we can explore all of the nodes or vertices of a graph in layers, starting from a particular node and moving outward to its neighbors before exploring deeper levels :  BFS is an optimal method used to explore all of the nodes or vertices of a graph in layers, starting from a particular node and moving outward to its neighbors before exploring deeper levels consuming least memory
+              DFS explores graph nodes deeply, traversing as far as possible along each branch before backtracking. It prioritizes depth over breadth, making it memory-efficient. It's used for tasks like topological sorting, finding connected components, and cycle detection.
               </p>
             </div>
           </div>

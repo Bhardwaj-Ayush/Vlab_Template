@@ -8,113 +8,119 @@ export default function Code() {
   const [copied, setCopied] = useState(false);
 
   const codeString = {
-    python: `from collections import deque
-  def bfs(graph, start):
-      visited = set()
-      queue = deque([start])
+    python: `def dfs(graph, start, visited=None):
+    if visited is None:
+        visited = set()
+    visited.add(start)
+    print(start)
 
-      while queue:
-          node = queue.popleft()
-          print(node)
+    for neighbor in graph[start]:
+        if neighbor not in visited:
+            dfs(graph, neighbor, visited)
 
-          if node not in visited:
-              visited.add(node)
-              for neighbor in graph[node]:
-                  if neighbor not in visited:
-                      queue.append(neighbor)
+# Example graph represented as an adjacency list
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F', 'G'],
+    'D': ['B'],
+    'E': ['B'],
+    'F': ['C'],
+    'G': ['C']
+}
 
-  graph = {
-      'A': ['B', 'C'],
-      'B': ['D', 'E'],
-      'C': ['F'],
-      'D': [],
-      'E': ['F'],
-      'F': []
-  }
-
-  bfs(graph, 'A')`,
-      cpp: `#include <iostream>
-      #include <queue>
-      #include <unordered_set>
-      #include <unordered_map>
-      using namespace std;
-      
-      void bfs(unordered_map<char, vector<char>>& graph, char start) {
-          unordered_set<char> visited;
-          queue<char> q;
-          q.push(start);
-      
-          while (!q.empty()) {
-              char node = q.front();
-              q.pop();
-              cout << node << " ";
-      
-              if (visited.find(node) == visited.end()) {
-                  visited.insert(node);
-                  for (char neighbor : graph[node]) {
-                      if (visited.find(neighbor) == visited.end()) {
-                          q.push(neighbor);
-                      }
-                  }
-              }
-          }
-      }
-      
-      int main() {
-          unordered_map<char, vector<char>> graph = {
-              {'A', {'B', 'C'}},
-              {'B', {'D', 'E'}},
-              {'C', {'F'}},
-              {'D', {}},
-              {'E', {'F'}},
-              {'F', {}}
-          };
-      
-          bfs(graph, 'A');
-      
-          return 0;
-      }
-      `,
+print("DFS traversal starting from node 'A':")
+dfs(graph, 'A')
+`,
       Java: `import java.util.*;
 
-      public class BFS {
+      public class DepthFirstSearch {
+          private Map<Integer, List<Integer>> graph;
       
-          public static void bfs(Map<Character, List<Character>> graph, char start) {
-              Set<Character> visited = new HashSet<>();
-              Queue<Character> queue = new LinkedList<>();
-              queue.offer(start);
+          public DepthFirstSearch(Map<Integer, List<Integer>> graph) {
+              this.graph = graph;
+          }
       
-              while (!queue.isEmpty()) {
-                  char node = queue.poll();
-                  System.out.print(node + " ");
+          public void dfs(int start) {
+              Set<Integer> visited = new HashSet<>();
+              dfsUtil(start, visited);
+          }
       
-                  if (!visited.contains(node)) {
-                      visited.add(node);
-                      List<Character> neighbors = graph.get(node);
-                      if (neighbors != null) {
-                          for (char neighbor : neighbors) {
-                              if (!visited.contains(neighbor)) {
-                                  queue.offer(neighbor);
-                              }
-                          }
-                      }
+          private void dfsUtil(int node, Set<Integer> visited) {
+              visited.add(node);
+              System.out.print(node + " ");
+      
+              List<Integer> neighbors = graph.getOrDefault(node, new ArrayList<>());
+              for (int neighbor : neighbors) {
+                  if (!visited.contains(neighbor)) {
+                      dfsUtil(neighbor, visited);
                   }
               }
           }
       
           public static void main(String[] args) {
-              Map<Character, List<Character>> graph = new HashMap<>();
-              graph.put('A', Arrays.asList('B', 'C'));
-              graph.put('B', Arrays.asList('D', 'E'));
-              graph.put('C', Arrays.asList('F'));
-              graph.put('D', new ArrayList<>());
-              graph.put('E', Arrays.asList('F'));
-              graph.put('F', new ArrayList<>());
+              Map<Integer, List<Integer>> graph = new HashMap<>();
+              graph.put(0, Arrays.asList(1, 2));
+              graph.put(1, Arrays.asList(0, 3, 4));
+              graph.put(2, Arrays.asList(0, 5));
+              graph.put(3, Arrays.asList(1));
+              graph.put(4, Arrays.asList(1));
+              graph.put(5, Arrays.asList(2));
       
-              bfs(graph, 'A');
+              DepthFirstSearch dfs = new DepthFirstSearch(graph);
+              System.out.print("DFS traversal starting from node 0: ");
+              dfs.dfs(0);
           }
       }
-    `,
+      `,
+      'C++' : `#include <iostream>
+      #include <vector>
+      #include <unordered_map>
+      #include <unordered_set>
+      
+      using namespace std;
+      
+      class Graph {
+      private:
+          unordered_map<int, vector<int>> adjacencyList;
+      
+      public:
+          void addEdge(int u, int v) {
+              adjacencyList[u].push_back(v);
+          }
+      
+          void dfs(int start) {
+              unordered_set<int> visited;
+              dfsUtil(start, visited);
+          }
+      
+      private:
+          void dfsUtil(int node, unordered_set<int>& visited) {
+              visited.insert(node);
+              cout << node << " ";
+      
+              for (int neighbor : adjacencyList[node]) {
+                  if (visited.find(neighbor) == visited.end()) {
+                      dfsUtil(neighbor, visited);
+                  }
+              }
+          }
+      };
+      
+      int main() {
+          Graph graph;
+          graph.addEdge(0, 1);
+          graph.addEdge(0, 2);
+          graph.addEdge(1, 3);
+          graph.addEdge(1, 4);
+          graph.addEdge(2, 5);
+      
+          cout << "DFS traversal starting from node 0: ";
+          graph.dfs(0);
+      
+          return 0;
+      }
+      ` ,
   };
 
   const handleCopy = () => {
@@ -151,7 +157,7 @@ export default function Code() {
               <button
                 className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg mx-1"
                 // style={{ backgroundColor: 'Black', color: 'white', marginBottom: '-20px' }}
-                onClick={() => setCurrentLanguage('cpp')}
+                onClick={() => setCurrentLanguage('C++')}
               >
                 C++
               </button>

@@ -2,7 +2,7 @@ import './App.css';
 import Aim from './Components/Aim';
 import Header from './Components/Header';
 import Navbar from './Components/Navbar';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import Routes
 import Theory from './Components/Theory';
 import Procedure from './Components/Procedure';
 import Simulation from './Components/Simulation';
@@ -14,34 +14,19 @@ function App() {
   return (
     <>
       <Router>
-          <Header/>
-          
-            <h1 className='text-4xl text-center m-20 font-extrabold font-serif'>Breadth First Search (BFS)</h1>
-          
-          <Navbar/>
-          <Switch>
-              <Route exact path='/Aim'>
-                <Aim/>
-              </Route>
-              <Route exact path='/Theory'>
-                <Theory/>
-              </Route>
-              <Route exact path='/Procedure'>
-                <Procedure/>
-              </Route>
-              <Route exact path='/Simulation'>
-                <Simulation/>
-              </Route>
-              <Route exact path='/Code'>
-                <Code/>
-              </Route>
-              <Route exact path='/Quiz1'>
-                <Quiz1/>
-              </Route>
-              <Route exact path='/Results'>
-                <Results/>
-              </Route>
-          </Switch>
+        <Header />
+        <h1 className='text-4xl text-center m-20 font-extrabold font-serif'>Depth First Search (DFS)</h1>
+        <Navbar />
+        {/* Use Routes component to wrap Route components */}
+        <Routes>
+          <Route path='/Aim' element={<Aim />} />
+          <Route path='/Theory' element={<Theory />} />
+          <Route path='/Procedure' element={<Procedure />} />
+          <Route path='/Simulation' element={<Simulation />} />
+          <Route path='/Code' element={<Code />} />
+          <Route path='/Quiz1' element={<Quiz1 />} />
+          <Route path='/Results' element={<Results />} />
+        </Routes>
       </Router>
     </>
   );

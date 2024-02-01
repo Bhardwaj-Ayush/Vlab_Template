@@ -9,7 +9,7 @@ export default function Aim() {
                         <h2 className="font-serif font-bold text-3xl text-center">Aim</h2>
                     </div>
                     <div className="desc1 font-Mooli">
-                        <p className="desc"> The goal of Breadth-First Search (BFS) is to systematically explore all of the nodes or vertices of a graph in layers, starting from a particular node and moving outward to its neighbors before exploring deeper levels.</p>
+                        <p className="desc"> The goal of Depth First Search (DFS) is to systematically explore all the nodes in a graph or tree structure by traversing as far as possible along each branch before backtracking. It's primarily used for traversal and searching in graphs or trees, often employed in solving problems like maze generation, topological sorting, and finding connected components.</p>
                     </div>
                 </div>
             </div>

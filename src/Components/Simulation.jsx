@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
 import { DataSet, Network } from "vis-network/standalone/esm/vis-network";
 
-const BFSAlgorithm = () => {
+const DFSAlgorithm = () => {
   const [graph, setGraph] = useState([]);
   const [network, setNetwork] = useState(null);
-  const [path, setPath] = useState([]); // New state to keep track of the BFS path
+  const [path, setPath] = useState([]); // New state to keep track of the DFS path
   const [showStartNodeInput, setShowStartNodeInput] = useState(false); // State to control the visibility of the start node input
 
   const containerRef = useRef(null);
@@ -52,60 +52,76 @@ const BFSAlgorithm = () => {
     return generatedGraph;
   };
 
-  // BFS algorithm implementation
-  const bfs = (graph, start) => {
-    const queue = [start];
+  // DFS algorithm implementation with backtracking
+  const dfsWithBacktracking = (graph, start) => {
+    const stack = [start];
     const visited = new Array(graph.length).fill(false);
     visited[start] = true;
+    const path = [start]; // Keep track of the current path
 
-    // Clear the path state before starting the animation
-    setPath([]);
+    const dfsRecursive = () => {
+      if (stack.length === 0) return; // If stack is empty, backtracking complete
 
-    const animateBFS = () => {
-      if (queue.length > 0) {
-        const current = queue.shift();
+      const current = stack[stack.length - 1];
 
-        // Update the path state to include the current node
-        setPath((prevPath) => [...prevPath, current]);
+      // Update the path state to include the current node
+      setPath([...path]);
 
-        // Change node color to red and highlight visited node
+      // Change node color to red and highlight visited node
+      network.body.data.nodes.update({
+        id: current,
+        color: { background: "purple", border: "purple" },
+      });
+
+      setTimeout(() => {
         network.body.data.nodes.update({
           id: current,
-          color: { background: "purple", border: "purple" },
+          color: { background: "grey", border: "black" },
         });
-        setTimeout(() => {
-          network.body.data.nodes.update({
-            id: current,
-            color: { background: "grey", border: "black" },
-          });
 
-          for (let i = 0; i < graph[current].length; i++) {
-            if (graph[current][i] === 1 && !visited[i]) {
-              queue.push(i);
-              visited[i] = true;
+        let foundUnvisitedNeighbor = false;
+        for (let i = 0; i < graph[current].length; i++) {
+          if (graph[current][i] === 1 && !visited[i]) {
+            stack.push(i);
+            visited[i] = true;
+            path.push(i);
 
-              // Darken the edge color and highlight visited edge
+            // Darken the edge color and highlight visited edge
+            network.body.data.edges.update({
+              id: `${current}-${i}`,
+              color: "#666666",
+              font: { color: "#666666" },
+            });
+            setTimeout(() => {
               network.body.data.edges.update({
                 id: `${current}-${i}`,
-                color: "#666666",
-                font: { color: "#666666" },
+                color: "grey",
+                font: { color: "grey" },
               });
-              setTimeout(() => {
-                network.body.data.edges.update({
-                  id: `${current}-${i}`,
-                  color: "grey",
-                  font: { color: "grey" },
-                });
-              }, 2000); // Add a delay of 2 seconds for transferring edges
-            }
+            }, 2000); // Add a delay of 2 seconds for transferring edges
+            foundUnvisitedNeighbor = true;
+            break;
           }
+        }
 
-          animateBFS(); // Move to the next step
-        }, 2000); // Add a delay of 2 seconds for transferring nodes
-      }
+        if (!foundUnvisitedNeighbor) {
+          // Backtrack: Undo the last decision
+          const poppedNode = stack.pop();
+          path.pop();
+
+          // Highlight backtracked node
+          network.body.data.nodes.update({
+            id: poppedNode,
+            color: { background: "orange", border: "orange" },
+          });
+        }
+
+        // Continue DFS traversal
+        dfsRecursive();
+      }, 2000); // Add a delay of 2 seconds for transferring nodes
     };
 
-    animateBFS();
+    dfsRecursive();
   };
 
   // Function to create and display the graph visualization using vis.js
@@ -152,12 +168,12 @@ const BFSAlgorithm = () => {
     visNetwork.fit(); // Fit the graph to the container
   };
 
-  // Run BFS algorithm and display the result
-  const runBFS = () => {
+  // Run DFS algorithm with backtracking and display the result
+  const runDFS = () => {
     const startNode = parseInt(document.getElementById("start").value);
 
     if (startNode >= 0 && startNode < graph.length) {
-      bfs(graph, startNode);
+      dfsWithBacktracking(graph, startNode);
     } else {
       alert("Invalid input. Please enter a valid node number.");
     }
@@ -172,7 +188,7 @@ const BFSAlgorithm = () => {
     <>
       <div className="border-2 md:m-28 md:px-20 py-8 shadow-2xl drop-shadow-xl bg-white rounded-lg">
         <div className="box" id="Practice">
-          <h2 className="font-Robo text-3xl text-center m-6">BFS Simulation</h2>
+          <h2 className="font-Robo text-3xl text-center m-6">DFS Simulation with Backtracking</h2>
           <div  className="h-80 bg-cyan-200 rounded-xl m-4 border-2 border-black" ref={containerRef}></div>
           <div className=" flex flex-col justify-center items-center space-y-4">
             <div>
@@ -185,19 +201,25 @@ const BFSAlgorithm = () => {
                 <div>
                   <label htmlFor="start" className="font-bold">Enter the starting node :</label>
                   <input type="number" id="start" className="border-2 border-gray-30 mx-2" />
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mx-2" onClick={runBFS}>Start Simulation</button>
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mx-2" onClick={runDFS}>Start Simulation</button>
                 </div>
               )}
               <div id="output" className="ml-20">
-                {path.length > 0 && (
-                  <p>
-                    <span className="md:font-bold md:text-2xl text-xl ml-10">BFS Path from Node {path[0]}:</span><br/> <span className="ml-10"> {path.join(" -> ")} </span> 
-                  </p>
-                )}
+                <p>
+                  {path.length > 0 ? (
+                    <>
+                      <span className="md:font-bold md:text-2xl text-xl ml-10">DFS Path from Node {path[0]}:</span><br />
+                      {path.map((node, index) => (
+                        <span key={index} style={{ marginLeft: '10px', color: index < path.length - 1 ? 'green' : 'orange' }}>{index < path.length - 1 ? node + ' -> ' : node}</span>
+                      ))}
+                    </>
+                  ) : (
+                    <span>No DFS path found.</span>
+                  )}
+                </p>
               </div>
               <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mx-2" onClick={clearGraph}>Reset</button>
             </div>
-
           </div>
         </div>
       </div>
@@ -205,4 +227,4 @@ const BFSAlgorithm = () => {
   );
 };
 
-export default BFSAlgorithm;
+export default DFSAlgorithm;
