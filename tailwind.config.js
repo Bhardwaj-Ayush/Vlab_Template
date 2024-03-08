@@ -8,6 +8,7 @@ module.exports = {
       fontFamily: {
         'Robo': ['Roboto',],
         'Mooli': ['Mooli'],
+        'Poppins':['Poppins']
       },
     },
   },

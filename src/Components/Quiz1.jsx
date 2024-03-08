@@ -4,129 +4,102 @@ const App = () => {
   const questionsData = [
     {
       s_no: 1,
-      question: "Which data structure is commonly used for implementing DFS?",
+      question: "Question?",
       answers: [
-        { text: "Queue", isCorrect: false },
-        { text: "Stack.", isCorrect: true },
-        { text: "Linked List", isCorrect: false },
-        { text: "Array", isCorrect: false },
+        { text: "Option 1", isCorrect: false },
+        { text: "Option 2", isCorrect: true },
+        { text: "Option 3", isCorrect: false },
+        { text: "Option 4", isCorrect: false },
       ],
     },
     {
       s_no: 2,
-      question: "In DFS, which vertex is visited first ?",
+      question: "Question?",
       answers: [
-        { text: "The vertex with the lowest value", isCorrect: false },
-        { text: "The vertex with the highest value", isCorrect: false },
-        { text: "The vertex with the most neighbors", isCorrect: false },
-        { text: "The starting vertex", isCorrect: true },
+        { text: "Option 1", isCorrect: false },
+        { text: "Option 2", isCorrect: true },
+        { text: "Option 3", isCorrect: false },
+        { text: "Option 4", isCorrect: false },
       ],
     },
     {
       s_no: 3,
-      question:
-        "What is the time complexity of DFS on a graph with V vertices and E edges ?",
+      question: "Question?",
       answers: [
-        { text: "O(V)", isCorrect: false },
-        { text: "O(E)", isCorrect: false },
-        { text: "O(V+E)", isCorrect: true },
-        { text: "O(V*E)", isCorrect: false },
+        { text: "Option 1", isCorrect: false },
+        { text: "Option 2", isCorrect: true },
+        { text: "Option 3", isCorrect: false },
+        { text: "Option 4", isCorrect: false },
       ],
     },
     {
       s_no: 4,
-      question:
-        " Identify the graph from the following for which DFS is well-suited for?",
+      question: "Question?",
       answers: [
-        { text: " A small cyclic graph", isCorrect: true },
-        { text: "A directed acyclic graph (DAG)", isCorrect: false },
-        { text: "A fully connected graph.", isCorrect: false },
-        { text: "A graph with heavy backtracking", isCorrect: false },
+        { text: "Option 1", isCorrect: false },
+        { text: "Option 2", isCorrect: true },
+        { text: "Option 3", isCorrect: false },
+        { text: "Option 4", isCorrect: false },
       ],
     },
     {
       s_no: 5,
-      question: "DFS algorithm is primarily used for _______________.",
+      question: "Question?",
       answers: [
-        { text: " Topological Sorting", isCorrect: true },
-        { text: " Encryption", isCorrect: false },
-        { text: "Searching", isCorrect: false },
-        { text: "Compression", isCorrect: false },
+        { text: "Option 1", isCorrect: false },
+        { text: "Option 2", isCorrect: true },
+        { text: "Option 3", isCorrect: false },
+        { text: "Option 4", isCorrect: false },
       ],
     },
     {
       s_no: 6,
-      question:
-        "  which of the following tree traversal technique use DFS.....",
+      question: "Question?",
       answers: [
-        { text: " Preorder traversal", isCorrect: false },
-        { text: " Inorder traversal", isCorrect: true },
-        { text: "Postorder traversal", isCorrect: false },
-        { text: "Level-order traversal", isCorrect: false },
+        { text: "Option 1", isCorrect: false },
+        { text: "Option 2", isCorrect: true },
+        { text: "Option 3", isCorrect: false },
+        { text: "Option 4", isCorrect: false },
       ],
     },
     {
       s_no: 7,
-      question: "Which of the following is NOT a common application of DFS?",
+      question: "Question?",
       answers: [
-        { text: "Solving Sudoku puzzles", isCorrect: true },
-        {
-          text: "Finding the shortest path in an unweighted graph",
-          isCorrect: false,
-        },
-        { text: "Web crawling ", isCorrect: false },
-        { text: "Network routing", isCorrect: false },
+        { text: "Option 1", isCorrect: false },
+        { text: "Option 2", isCorrect: true },
+        { text: "Option 3", isCorrect: false },
+        { text: "Option 4", isCorrect: false },
       ],
     },
     {
       s_no: 8,
-      question:
-        " What is the main advantage of using DFS over Breadth-First Search (BFS)?",
+      question: "Question?",
       answers: [
-        { text: "DFS reaches deep node faster", isCorrect: true },
-        { text: "DFS uses less memory", isCorrect: false },
-        { text: "DFS uses less memory", isCorrect: false },
-        { text: "DFS guarantees completeness", isCorrect: false },
+        { text: "Option 1", isCorrect: false },
+        { text: "Option 2", isCorrect: true },
+        { text: "Option 3", isCorrect: false },
+        { text: "Option 4", isCorrect: false },
       ],
     },
     {
       s_no: 9,
-      question:
-        "In DFS traversal, if a node has multiple unvisited neighbors, which one is typically explored first?",
+      question: "Question?",
       answers: [
-        {
-          text: "The node with the lowest value",
-          isCorrect: false,
-        },
-        {
-          text: "The node with the highest value",
-          isCorrect: false,
-        },
-        {
-          text: "The first encountered neighbor in the adjacency list",
-          isCorrect: true,
-        },
-        { text: "The last encountered neighbor in the adjacency list", isCorrect: false },
+        { text: "Option 1", isCorrect: false },
+        { text: "Option 2", isCorrect: true },
+        { text: "Option 3", isCorrect: false },
+        { text: "Option 4", isCorrect: false },
       ],
     },
     {
       s_no: 10,
-      question:
-        "In a Depth First Search (DFS) traversal of a directed graph, what is the purpose of maintaining a [visited] set?",
+      question: "Question?",
       answers: [
-        {
-          text: "To ensure that every node is visited exactly once during the traversal",
-          isCorrect: false,
-        },
-        {
-          text: "To prevent revisiting the same node within the same recursive call stack",
-          isCorrect: true,
-        },
-        {
-          text: "To store the nodes in the order they are visited for later analysis",
-          isCorrect: false,
-        },
-        { text: "To keep track of the nodes that have been removed from the graph", isCorrect: false },
+        { text: "Option 1", isCorrect: false },
+        { text: "Option 2", isCorrect: true },
+        { text: "Option 3", isCorrect: false },
+        { text: "Option 4", isCorrect: false },
       ],
     },
     

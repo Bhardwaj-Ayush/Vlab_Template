@@ -8,119 +8,15 @@ export default function Code() {
   const [copied, setCopied] = useState(false);
 
   const codeString = {
-    python: `def dfs(graph, start, visited=None):
-    if visited is None:
-        visited = set()
-    visited.add(start)
-    print(start)
-
-    for neighbor in graph[start]:
-        if neighbor not in visited:
-            dfs(graph, neighbor, visited)
-
-# Example graph represented as an adjacency list
-graph = {
-    'A': ['B', 'C'],
-    'B': ['A', 'D', 'E'],
-    'C': ['A', 'F', 'G'],
-    'D': ['B'],
-    'E': ['B'],
-    'F': ['C'],
-    'G': ['C']
-}
-
-print("DFS traversal starting from node 'A':")
-dfs(graph, 'A')
-`,
-      Java: `import java.util.*;
-
-      public class DepthFirstSearch {
-          private Map<Integer, List<Integer>> graph;
-      
-          public DepthFirstSearch(Map<Integer, List<Integer>> graph) {
-              this.graph = graph;
-          }
-      
-          public void dfs(int start) {
-              Set<Integer> visited = new HashSet<>();
-              dfsUtil(start, visited);
-          }
-      
-          private void dfsUtil(int node, Set<Integer> visited) {
-              visited.add(node);
-              System.out.print(node + " ");
-      
-              List<Integer> neighbors = graph.getOrDefault(node, new ArrayList<>());
-              for (int neighbor : neighbors) {
-                  if (!visited.contains(neighbor)) {
-                      dfsUtil(neighbor, visited);
-                  }
-              }
-          }
-      
-          public static void main(String[] args) {
-              Map<Integer, List<Integer>> graph = new HashMap<>();
-              graph.put(0, Arrays.asList(1, 2));
-              graph.put(1, Arrays.asList(0, 3, 4));
-              graph.put(2, Arrays.asList(0, 5));
-              graph.put(3, Arrays.asList(1));
-              graph.put(4, Arrays.asList(1));
-              graph.put(5, Arrays.asList(2));
-      
-              DepthFirstSearch dfs = new DepthFirstSearch(graph);
-              System.out.print("DFS traversal starting from node 0: ");
-              dfs.dfs(0);
-          }
-      }
+    python: `
+    ADD Python code
+    `,
+      Java: `
+      ADD JAVA CODE  
       `,
-      'C++' : `#include <iostream>
-      #include <vector>
-      #include <unordered_map>
-      #include <unordered_set>
-      
-      using namespace std;
-      
-      class Graph {
-      private:
-          unordered_map<int, vector<int>> adjacencyList;
-      
-      public:
-          void addEdge(int u, int v) {
-              adjacencyList[u].push_back(v);
-          }
-      
-          void dfs(int start) {
-              unordered_set<int> visited;
-              dfsUtil(start, visited);
-          }
-      
-      private:
-          void dfsUtil(int node, unordered_set<int>& visited) {
-              visited.insert(node);
-              cout << node << " ";
-      
-              for (int neighbor : adjacencyList[node]) {
-                  if (visited.find(neighbor) == visited.end()) {
-                      dfsUtil(neighbor, visited);
-                  }
-              }
-          }
-      };
-      
-      int main() {
-          Graph graph;
-          graph.addEdge(0, 1);
-          graph.addEdge(0, 2);
-          graph.addEdge(1, 3);
-          graph.addEdge(1, 4);
-          graph.addEdge(2, 5);
-      
-          cout << "DFS traversal starting from node 0: ";
-          graph.dfs(0);
-      
-          return 0;
-      }
-      ` ,
+      'C++' : `
+      ADD C++ CODE
+       ` ,
   };
 
   const handleCopy = () => {
@@ -138,7 +34,7 @@ dfs(graph, 'A')
       <div className="container">
         <div className="box" id="code">
           <div className="title">
-            <h2 className="font-Robo text-3xl text-center">Code</h2>
+            <h2 className="font-Robo text-xl md:text-3xl text-center">Code</h2>
           </div>
           <div className="desc1">
             <div className="code_header">
