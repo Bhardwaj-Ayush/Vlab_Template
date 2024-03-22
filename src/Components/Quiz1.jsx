@@ -4,12 +4,12 @@ const App = () => {
   const questionsData = [
     {
       s_no: 1,
-      question: "Question?",
+      question: "What is your name ?",
       answers: [
-        { text: "Option 1", isCorrect: false },
-        { text: "Option 2", isCorrect: true },
-        { text: "Option 3", isCorrect: false },
-        { text: "Option 4", isCorrect: false },
+        { text: "Avishkaar", isCorrect: false },
+        { text: "Ayush", isCorrect: true },
+        { text: "Arpit", isCorrect: false },
+        { text: "None of the above ", isCorrect: false },
       ],
     },
     {
@@ -150,29 +150,39 @@ const App = () => {
   };
 
   const renderResult = () => {
-    return (
-      <div className="border-black border-2 text-center flex flex-col items-center">
-        <h2 className="font-serif text-2xl font-bold m-2">Quiz Result</h2>
-        <p className="font-serif text-2xl font-bold m-2">Your Score: {score}</p>
-        <div className="font-serif text-lg font-bold text-justify mx-12 flex flex-wrap justify-center">
-          {questionsData.map((question) => (
-            <div className="question-answer flex flex-col items-center" key={question.s_no}>
-              <p>
-                <button onClick={() => setCurrentQuestionIndex(question.s_no - 1)} className="ml-2 focus:outline-none">
-                  <span className={`rounded-full h-8 w-8 flex items-center justify-center text-white ${question.answers.find((a) => a.isCorrect).isCorrect ? 'bg-green-500' : 'bg-red-500'}`}>
-                    {question.s_no}
-                  </span>
-                </button>
-              </p>
-              <br />
-              {/* Remove the question and answer display */}
-            </div>
-          ))}
-        </div>
-        <button onClick={restartQuiz} className="border-2 m-4 md:ml-20 rounded-lg shadow-2xl drop-shadow-xl p-2 bg-blue-900 font-sans text-white font-semibold hover:transform hover:scale-110 hover:bg-opacity-75 hover:duration-300">Restart Quiz</button>
+  return (
+    <div className="border-black border-2 text-center flex flex-col items-center">
+      <h2 className="font-serif text-2xl font-bold m-2">Quiz Result</h2>
+      <p className="font-serif text-2xl font-bold m-2">Your Score: {score}</p>
+      <div className="font-serif text-lg font-bold text-justify mx-12 flex flex-wrap justify-center">
+        {questionsData.map((question) => (
+          <div className="question-answer flex flex-col items-center" key={question.s_no}>
+            <p>
+              <button onClick={() => setCurrentQuestionIndex(question.s_no - 1)} className="ml-2 focus:outline-none">
+                <span className={`rounded-full h-8 w-8 flex items-center justify-center text-white ${score >= question.s_no ? 'bg-green-500' : 'bg-red-500'}`}>
+                  {question.s_no}
+                </span>
+              </button>
+            </p>
+            <br />
+            {currentQuestionIndex === question.s_no - 1 && (
+              <div>
+                {/* <p>{question.question}</p> */}
+                <div>
+                  {question.answers.map((answer, index) => (
+                    <p key={index} className={answer.isCorrect ? 'text-green-500' : 'text-red-500'}></p>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
-    );
-  };
+      <button onClick={restartQuiz} className="border-2 m-4 md:ml-20 rounded-lg shadow-2xl drop-shadow-xl p-2 bg-blue-900 font-sans text-white font-semibold hover:transform hover:scale-110 hover:bg-opacity-75 hover:duration-300">Restart Quiz</button>
+    </div>
+  );
+};
+
   
   return (
     <div>

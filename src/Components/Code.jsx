@@ -9,10 +9,60 @@ export default function Code() {
 
   const codeString = {
     python: `
-    ADD Python code
+    from collections import deque
+  def bfs(graph, start):
+      visited = set()
+      queue = deque([start])
+
+      while queue:
+          node = queue.popleft()
+          print(node)
+
+          if node not in visited:
+              visited.add(node)
+              for neighbor in graph[node]:
+                  if neighbor not in visited:
+                      queue.append(neighbor)
+
+  graph = {
+      'A': ['B', 'C'],
+      'B': ['D', 'E'],
+      'C': ['F'],
+      'D': [],
+      'E': ['F'],
+      'F': []
+  }
+
+  bfs(graph, 'A')
     `,
       Java: `
-      ADD JAVA CODE  
+      
+    from collections import deque
+    def bfs(graph, start):
+        visited = set()
+        queue = deque([start])
+  
+        while queue:
+            node = queue.popleft()
+            print(node)
+  
+            if node not in visited:
+                visited.add(node)
+                for neighbor in graph[node]:
+                    if neighbor not in visited:
+                        queue.append(neighbor)
+  
+    graph = {
+        'A': ['B', 'C'],
+        'B': ['D', 'E'],
+        'C': ['F'],
+        'D': [],
+        'E': ['F'],
+        'F': []
+    }
+  
+    bfs(graph, 'A')
+      
       `,
       'C++' : `
       ADD C++ CODE
@@ -27,7 +77,6 @@ export default function Code() {
       setCopied(false);
     }, 1500);
   };
-
 
   return (
     <>

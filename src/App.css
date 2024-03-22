@@ -308,7 +308,7 @@ nav .boxq a img {
 
 .container .box .desc {
   line-height: 1.8;
-  text-decoration: none;
+  /* text-decoration: none; */
   justify-content: center;
   display: flex;
   font-weight: bold;
@@ -645,7 +645,7 @@ nav .boxq a img {
 }
 .container .box .desc {
   line-height: 1.8;
-  text-decoration: none;
+  /* text-decoration: none; */
   justify-content: center;
   display: flex;
   font-weight: bold;

@@ -10,6 +10,7 @@ import Code from './Components/Code';
 import Quiz1 from './Components/Quiz1';
 import Results from './Components/Results';
 import References from './Components/References';
+import Team from './Components/Team';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/Quiz1' element={<Quiz1 />} />
           <Route path='/Results' element={<Results/>} />
           <Route path='/References' element={<References/>} />
+          <Route path='/Team' element={<Team/>} />
         </Routes>
       </Router>
     </>

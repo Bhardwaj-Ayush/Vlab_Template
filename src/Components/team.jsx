@@ -1,11 +1,22 @@
 import React from 'react'
 
-function team() {
+export default function Team() {
   return (
-    <div>
-      <h1>Helooooooooooooooooooooooooooooooooooooooooooooooo</h1>
-    </div>
+    <>
+            <div className="container">
+                <div className="box" id="aim">
+                    <div className="title">
+                        <h2 className="font-serif font-bold text-3xl text-center">Team</h2>
+                    </div>
+                    <div className="desc1 font-Mooli">
+                        <p className="desc">
+                          <div>
+                            Team Members
+                          </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </>
   )
 }
-
-export default team
